@@ -1,2 +1,1 @@
-# NewsAssignment
-News Assignment
+# assignment

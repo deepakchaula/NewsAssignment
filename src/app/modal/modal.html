@@ -1,0 +1,33 @@
+<button type="button" class="close pull-right" aria-label="Close" (click)="onNoClick()">
+  <span aria-hidden="true">&times;</span>
+</button>
+<h1 mat-dialog-title>{{data.id}}</h1>
+<div mat-dialog-content>
+  <!-- <p *ngFor="let item of myModalDataService">{{item.author}}</p> -->
+      <table matSort>
+        <tr>
+          <th mat-sort-header="source">source</th>
+          <th mat-sort-header="author">author</th>
+          <th mat-sort-header="title">title</th>
+          <th mat-sort-header="description">description</th>
+          <th mat-sort-header="url" class="wordBreak">url</th>
+          <th mat-sort-header="urlToImage">urlToImage</th>
+          <th mat-sort-header="publishedAt">publishedAt</th>
+          <th mat-sort-header="content">content</th>
+        </tr>
+  
+        <tr *ngFor="let item of myModalDataService; let i=index;">
+          <td style="width: 10%;">{{item.source.name}}</td>
+          <td style="width: 10%;">{{item.author}}</td>
+          <td style="width: 10%;">{{item.title}}</td>
+          <td style="width: 20%;">{{item.description}}</td>
+          <td style="width: 10%;" class="wordBreak"><a target="_blank" href="{{item.url}}">{{item.url}}</a></td>
+          <td style="width: 10%;"><img class="imgSize" alt="" src="{{item.urlToImage}}"/></td>
+          <td style="width: 10%;">{{item.publishedAt}}</td>
+          <td style="width: 20%;">{{item.content}}</td>
+        </tr>
+      </table>
+</div>
+<!-- <div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div> -->

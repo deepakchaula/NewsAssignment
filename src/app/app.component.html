@@ -1,0 +1,37 @@
+<mat-toolbar color="accent">
+  <span>Deepak Chaula</span>
+  <span class="demo-toolbar"></span>
+</mat-toolbar>
+
+<mat-card>
+  <div class="container">
+      <div class="searchFilter">
+          <div class="leftFloatFull">
+              <form [formGroup]="form" class="app-search">
+                  <input type="text" formControlName="groupName" [(ngModel)]="searchText" placeholder="Search news source" class="form-control">
+              </form>
+          </div>
+      </div>
+    <table matSort>
+        <tr>
+          <th mat-sort-header="id">id</th>
+          <th mat-sort-header="name">name</th>
+          <th mat-sort-header="description">description</th>
+          <th mat-sort-header="url">url</th>
+          <th mat-sort-header="category">category</th>
+          <th mat-sort-header="language">language</th>
+          <th mat-sort-header="country">country</th>
+        </tr>
+      
+        <tr *ngFor="let item of myGroupPostDataService | groupFilter: {name: searchText}; let i=index;" (click)="openDialog(item.id)" id={{item.id}}>
+          <td style="width: 10%;">{{item.id}}</td>
+          <td style="width: 10%;">{{item.name}}</td>
+          <td style="width: 30%;">{{item.description}}</td>
+          <td style="width: 20%;" class="wordBreak"><a target="_blank" href="{{item.url}}">{{item.url}}</a></td>
+          <td style="width: 10%;">{{item.category}}</td>
+          <td style="width: 10%;">{{item.language}}</td>
+          <td style="width: 10%;">{{item.country}}</td>
+        </tr>
+      </table>
+  </div>
+</mat-card>
